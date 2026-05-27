@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "A user in the system",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "delivery", "admin"] },
+        "organizationId": { "type": "string" },
+        "credits": { "type": "number" },
+        "addresses": { "type": "array" },
+        "lunchAddressId": { "type": "string" },
+        "dinnerAddressId": { "type": "string" },
+        "subscription": { "type": "object" },
+        "dailyMeals": { "type": "object" }
+      },
+      "required": ["email", "name", "role", "credits", "addresses", "dailyMeals"]
+    },
+    "organization": {
+      "title": "Organization",
+      "description": "An organization or workplace",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" }
+      },
+      "required": ["name", "address"]
+    },
+    "unserviceableDay": {
+      "title": "Unserviceable Day",
+      "description": "A day when tiffins cannot be delivered",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string" },
+        "reason": { "type": "string" }
+      },
+      "required": ["date", "reason"]
+    },
+    "transaction": {
+      "title": "Transaction",
+      "description": "A credit or debit transaction",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "date": { "type": "string" },
+        "type": { "type": "string", "enum": ["credit", "debit"] },
+        "amount": { "type": "number" },
+        "description": { "type": "string" }
+      },
+      "required": ["userId", "userName", "date", "type", "amount", "description"]
+    },
+    "notification": {
+      "title": "Notification",
+      "description": "A notification message",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["title", "message", "timestamp", "read"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/user" },
+      "description": "Stores user profiles"
+    },
+    "organizations/{organizationId}": {
+      "schema": { "$ref": "#/entities/organization" },
+      "description": "Stores organizations"
+    },
+    "unserviceableDays/{dayId}": {
+      "schema": { "$ref": "#/entities/unserviceableDay" },
+      "description": "Stores unserviceable days"
+    },
+    "transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/transaction" },
+      "description": "Stores transaction logs"
+    },
+    "notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/notification" },
+      "description": "Stores notifications"
+    }
+  }
+}

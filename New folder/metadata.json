@@ -1,0 +1,6 @@
+{
+  "name": "Tiffin Delivery and Management System",
+  "description": "An elegant multi-role Tiffin delivery, subscription, and credits management system supporting multiple addresses, live calendars, pausing, delivery logs, organization delivery, and admin controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
