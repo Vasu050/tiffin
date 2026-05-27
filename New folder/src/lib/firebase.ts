@@ -1,10 +1,20 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, User } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import firebaseFileConfig from '../../firebase-applet-config.json';
+
+const firebaseFileConfig = {
+  apiKey: 'AIzaSyD9Lp0rFYjcxXnnrYmgD-xp5GhSBH0P8tg',
+  authDomain: 'gemini-api-fd037.firebaseapp.com',
+  projectId: 'gemini-api-fd037',
+  firestoreDatabaseId: 'ai-studio-bf241ab9-3d15-40c4-8a1e-542a092135f8',
+  storageBucket: 'gemini-api-fd037.firebasestorage.app',
+  messagingSenderId: '1083361050149',
+  appId: '1:1083361050149:web:1e2ab2c7f259b4c57089cc',
+  measurementId: 'G-QJEZG3VPET',
+};
 
 // Prefer Vite env vars (prefix VITE_) for production/deploys; fall back to
-// the local `firebase-applet-config.json` for existing development setups.
+// the built-in local Firebase config for existing development setups.
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY ?? firebaseFileConfig.apiKey,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ?? firebaseFileConfig.authDomain,
